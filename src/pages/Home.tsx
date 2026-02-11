@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { BookOpen, Users, Award, ShieldCheck } from "lucide-react";
+import Usage from "../components/Usage";
 import "../styles/Home.css"; // Import the external CSS file
 
 const Home = () => {
@@ -41,8 +42,10 @@ const Home = () => {
     <div className="home-container">
       {/* Hero Section */}
       <section className="hero-section">
+        <div className="hero-background-container">
+          <Usage />
+        </div>
         <div className="hero-overlay" />
-        <div className="hero-background" />
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}

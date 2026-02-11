@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from "react";
 import p5 from "p5";
+import { useEffect, useRef, useState } from "react";
+
 import { Volume2, Headphones, Play, Pause } from "lucide-react";
 import "../styles/Audio.css"; // Ensure the path matches your structure
 
