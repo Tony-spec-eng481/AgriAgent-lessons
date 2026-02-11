@@ -1,0 +1,340 @@
+/* navbar.css */
+/* SmartAgri School Navbar Styles */
+
+/* ===== ROOT VARIABLES ===== */
+:root {
+  /* Color Palette - Agriculture Theme */
+  --agri-green: #2d5a27;
+  --agri-light-green: #3e7c3a;
+  --agri-cream: #f5f1e6;
+  --agri-white: #ffffff;
+  --agri-dark-green: #1e3a1a;
+  --agri-gold: #d4af37;
+  --agri-transparent-green: rgba(45, 90, 39, 0.95);
+  
+  /* Spacing */
+  --nav-height: 64px;
+  --container-padding: 1rem;
+  --transition-speed: 0.3s;
+  
+  /* Shadows */
+  --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 20px rgba(0, 0, 0, 0.15);
+  --shadow-nav: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== RESET & BASE STYLES ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+}
+
+/* ===== NAVBAR CONTAINER ===== */
+.navbar-agri {
+  background-color: var(--agri-green);
+  color: var(--agri-white);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: var(--nav-height);
+  box-shadow: var(--shadow-nav);
+  transition: all var(--transition-speed) ease;
+  border-bottom: 3px solid var(--agri-gold);
+}
+
+.navbar-agri.scrolled {
+  background-color: var(--agri-transparent-green);
+  backdrop-filter: blur(10px);
+  height: 60px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== NAVBAR INNER CONTAINER ===== */
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  height: 100%;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* ===== LOGO & BRAND STYLES ===== */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 0.75rem;
+  transition: transform 0.2s ease;
+}
+
+.nav-brand:hover {
+  transform: scale(1.02);
+}
+
+.nav-logo {
+  height: 2rem;
+  width: 2rem;
+  color: var(--agri-cream);
+  transition: transform 0.5s ease;
+}
+
+.nav-brand:hover .nav-logo {
+  transform: rotate(15deg);
+}
+
+.nav-brand-name {
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: -0.5px;
+  color: var(--agri-white);
+  background: linear-gradient(to right, var(--agri-cream), #e8e4d8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== DESKTOP NAVIGATION ===== */
+.nav-desktop {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 0.5rem;
+  margin-right: 1rem;
+}
+
+.nav-link-item {
+  position: relative;
+}
+
+.nav-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: var(--agri-white);
+  font-weight: 500;
+  font-size: 0.95rem;
+  border-radius: 4px;
+  transition: all var(--transition-speed) ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--agri-cream);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover {
+  background-color: var(--agri-light-green);
+  color: var(--agri-cream);
+  transform: translateY(-2px);
+}
+
+.nav-link:hover::before {
+  width: 80%;
+}
+
+.nav-link.active {
+  background-color: var(--agri-light-green);
+  color: var(--agri-cream);
+}
+
+.nav-link.active::before {
+  width: 80%;
+}
+
+/* Login Button Special Styling */
+.nav-login-btn {
+  background-color: var(--agri-cream);
+  color: var(--agri-green) !important;
+  font-weight: 700;
+  padding: 0.6rem 1.5rem;
+  border-radius: 6px;
+  border: 2px solid transparent;
+  transition: all var(--transition-speed) ease;
+  margin-left: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-login-btn:hover {
+  background-color: var(--agri-white);
+  color: var(--agri-dark-green) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-color: var(--agri-gold);
+}
+
+/* ===== MOBILE MENU TOGGLE ===== */
+.nav-mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  color: var(--agri-white);
+  transition: all var(--transition-speed) ease;
+}
+
+.nav-mobile-toggle:hover {
+  background-color: var(--agri-light-green);
+  transform: rotate(90deg);
+}
+
+.nav-toggle-icon {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+/* ===== MOBILE MENU ===== */
+.nav-mobile-menu {
+  display: none;
+  background-color: var(--agri-dark-green);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  border-top: 2px solid var(--agri-gold);
+  animation: slideDown 0.4s ease forwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav-mobile-links {
+  list-style: none;
+  padding: 1rem;
+}
+
+.nav-mobile-item {
+  margin-bottom: 0.5rem;
+}
+
+.nav-mobile-link {
+  display: block;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  color: var(--agri-white);
+  font-weight: 500;
+  border-radius: 6px;
+  transition: all var(--transition-speed) ease;
+  border-left: 3px solid transparent;
+}
+
+.nav-mobile-link:hover {
+  background-color: var(--agri-light-green);
+  padding-left: 1.25rem;
+  border-left-color: var(--agri-gold);
+}
+
+.nav-mobile-link.active {
+  background-color: var(--agri-green);
+  border-left-color: var(--agri-cream);
+}
+
+.nav-mobile-login {
+  background-color: var(--agri-cream);
+  color: var(--agri-green) !important;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 1rem;
+  border: 2px solid transparent;
+}
+
+.nav-mobile-login:hover {
+  background-color: var(--agri-white);
+  border-color: var(--agri-gold);
+}
+
+/* ===== RESPONSIVE STYLES ===== */
+@media (max-width: 768px) {
+  .nav-desktop {
+    display: none;
+  }
+  
+  .nav-mobile-toggle {
+    display: block;
+  }
+  
+  .nav-brand-name {
+    font-size: 1.3rem;
+  }
+  
+  .nav-logo {
+    height: 1.8rem;
+    width: 1.8rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .nav-mobile-menu {
+    display: none !important;
+  }
+}
+
+/* For larger screens */
+@media (min-width: 1200px) {
+  .nav-container {
+    padding: 0 2rem;
+  }
+  
+  .nav-links {
+    gap: 1rem;
+  }
+  
+  .nav-link {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+/* Animation for leaf icon on page load */
+@keyframes leafFloat {
+  0% {
+    transform: translateY(-10px) rotate(0deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.nav-logo {
+  animation: leafFloat 1s ease-out;
+}
