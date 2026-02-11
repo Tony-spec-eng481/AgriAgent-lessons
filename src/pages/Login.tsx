@@ -3,8 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   Mail,
   Lock,
-  UserPlus,
-  LogIn,
   Eye,
   EyeOff,
   User,

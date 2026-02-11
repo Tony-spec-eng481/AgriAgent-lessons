@@ -5,7 +5,7 @@ import "../styles/Contact.css";
 
 const Contact = () => {
  
-  const [showSuccess, setShowSuccess] = useState(false);
+  const [ showSuccess ] = useState(false);
 
 
   const contactMethods = [

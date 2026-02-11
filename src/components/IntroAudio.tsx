@@ -1,55 +1,135 @@
-import { useEffect, useRef } from 'react';
-import p5 from 'p5';
+import { useEffect, useRef, useState } from "react";
+import p5 from "p5";
+import { Volume2, Headphones, Play, Pause } from "lucide-react";
+import "../styles/Audio.css"; // Ensure the path matches your structure
 
-const IntroAudio = ({ audioUrl }: { audioUrl: string }) => {
+interface IntroAudioProps {
+  audioUrl: string;
+}
+
+const IntroAudio = ({ audioUrl }: IntroAudioProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const audioCtxRef = useRef<AudioContext | null>(null);
+  const isPlayingRef = useRef(false);
+
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const togglePlay = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (audioCtxRef.current?.state === "suspended") {
+      audioCtxRef.current.resume();
+    }
+
+    if (isPlaying) {
+      audio.pause();
+    } else {
+      audio.play().catch(() => console.log("User interaction required"));
+    }
+    setIsPlaying(!isPlaying);
+    isPlayingRef.current = !isPlaying;
+  };
 
   useEffect(() => {
-    if (!audioUrl) return;
+    if (!audioUrl || !containerRef.current) return;
+
+    let analyzer: AnalyserNode | null = null;
+    let source: MediaElementAudioSourceNode | null = null;
 
     const Sketch = (p: any) => {
-      let audio: HTMLAudioElement;
-
-      p.preload = () => {
-        // p5.sound needs a separate import or global inclusion, 
-        // for now we'll use base HTML5 audio with p5 visual feedback
-      };
-
       p.setup = () => {
-        p.createCanvas(100, 100).parent(containerRef.current);
-        audio = new Audio(audioUrl);
-        
-        // Auto-play requirement
-        audio.play().catch(() => console.log("Auto-play blocked, interaction needed"));
+        p.createCanvas(60, 60).parent(containerRef.current);
+        const audio = new Audio(audioUrl);
+        audioRef.current = audio;
+
+        try {
+          const AudioCtx =
+            window.AudioContext || (window as any).webkitAudioContext;
+          const audioContext = new AudioCtx();
+          audioCtxRef.current = audioContext;
+
+          analyzer = audioContext.createAnalyser();
+          source = audioContext.createMediaElementSource(audio);
+          source.connect(analyzer);
+          analyzer.connect(audioContext.destination);
+          analyzer.fftSize = 128;
+        } catch (err) {
+          console.log("Viz not supported", err);
+        }
+
+        audio.addEventListener("play", () => {
+          setIsPlaying(true);
+          isPlayingRef.current = true;
+        });
+        audio.addEventListener("pause", () => {
+          setIsPlaying(false);
+          isPlayingRef.current = false;
+        });
+        audio.addEventListener("ended", () => {
+          setIsPlaying(false);
+          isPlayingRef.current = false;
+        });
       };
 
       p.draw = () => {
         p.clear();
-        p.noFill();
-        p.stroke(45, 90, 39); // agriculture-green
-        p.strokeWeight(3);
-        
-        // Simple "sound ripple" animation
-        if (!audio.paused) {
-          let radius = p.map(p.sin(p.frameCount * 0.1), -1, 1, 20, 40);
-          p.circle(p.width/2, p.height/2, radius);
-          p.circle(p.width/2, p.height/2, radius + 10);
-        } else {
-          p.circle(p.width/2, p.height/2, 30);
+        if (!analyzer) return;
+
+        const bufferLength = analyzer.frequencyBinCount;
+        const dataArray = new Uint8Array(bufferLength);
+        analyzer.getByteFrequencyData(dataArray);
+
+        p.noStroke();
+        p.fill(72, 187, 120); // Professional Green
+
+        const barWidth = p.width / bufferLength;
+        for (let i = 0; i < bufferLength; i++) {
+          const barHeight = (dataArray[i] / 255) * p.height;
+          p.rect(
+            i * barWidth,
+            p.height - barHeight,
+            barWidth - 1,
+            barHeight,
+            2,
+          );
         }
       };
     };
 
     const myP5 = new p5(Sketch);
-    return () => myP5.remove();
+    return () => {
+      audioRef.current?.pause();
+      myP5.remove();
+    };
   }, [audioUrl]);
 
   return (
-    <div className="flex items-center gap-4 p-4 bg-agriculture-cream/20 rounded-2xl border border-agriculture-green/10">
-      <div ref={containerRef} className="w-12 h-12" />
-      <div>
-        <h4 className="font-bold text-agriculture-green">Intro Narration</h4>
-        <p className="text-xs text-agriculture-brown">Listen to the lesson overview</p>
+    <div
+      className={`audio-card ${isPlaying ? "active" : ""}`}
+      onClick={togglePlay}
+    >
+      <div className="visualizer-section">
+        <div ref={containerRef} className="canvas-container" />
+        <div className="overlay-icon">
+          {isPlaying ? <Pause size={20} /> : <Play size={20} />}
+        </div>
+      </div>
+
+      <div className="audio-info">
+        <div className="header-row">
+          <Headphones size={14} className="icon-green" />
+          <span className="title">Intro Narration</span>
+        </div>
+        <p className="subtitle">
+          {isPlaying ? "Now playing..." : "Click to listen"}
+        </p>
+      </div>
+
+      <div className="status-badge">
+        <Volume2 size={18} className={isPlaying ? "pulse" : ""} />
+        <span className="label">{isPlaying ? "Live" : "Ready"}</span>
       </div>
     </div>
   );
