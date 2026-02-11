@@ -24,7 +24,7 @@ const Auth = () => {
   });
 
   // Handle Submit
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
 
@@ -35,8 +35,9 @@ const Auth = () => {
     console.log("Form Submitted:", formData);
   };
 
+
   // Handle Input Change
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -44,9 +45,10 @@ const Auth = () => {
   };
 
   // Handle Social Login
-  const handleSocialLogin = (provider) => {
+  const handleSocialLogin = (provider: string) => {
     console.log(`Logging in with ${provider}`);
   };
+
 
   // Animation Variants
   const formVariants = {
@@ -182,7 +184,7 @@ const Auth = () => {
                         )}
                       </button>
                     </div>
-
+    
                     {!isLogin && (
                       <p className="text-xs text-gray-500 mt-2">
                         Must be at least 8 characters with letters and numbers

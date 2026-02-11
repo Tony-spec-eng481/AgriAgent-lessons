@@ -24,7 +24,7 @@ const Navbar = () => {
   };
 
   // Check if a link is active
-  const isActive = (path) => location.pathname === path;
+  const isActive = (path: string): boolean => location.pathname === path;
 
   return (
     <nav className={`navbar-agri ${scrolled ? "scrolled" : ""}`}>
