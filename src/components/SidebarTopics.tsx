@@ -5,7 +5,6 @@ const SidebarTopics = ({
   topics,
   activeTopicId,
   onTopicSelect,
-  progress = 33,
 }: any) => {
   const completedCount = topics?.filter((t: any) => t.completed).length || 2;
   const totalCount = topics?.length || 6;
