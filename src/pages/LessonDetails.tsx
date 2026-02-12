@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import SidebarTopics from "../components/SidebarTopics";
 import IntroAudio from "../components/IntroAudio";
+import P5VideoPlayer from "../components/P5VideoPlayer";
 import {
   Book,
   Play,
@@ -19,7 +20,7 @@ import {
 import "../styles/LessonDetails.css";
 
 // Define interfaces
-interface Topic {
+interface Topic {   
   id: string;
   title: string;
   videoUrl: string;
@@ -52,41 +53,41 @@ const mockLessons: Record<string, Lesson> = {
       {
         id: "crop-1",
         title: "Soil Science & Testing",
-        videoUrl: "https://www.youtube.com/embed/O-1o5z-CRqQ",
+        videoUrl: "/videos/soil-testing.mp4",
         notes:
           "Understanding soil types, pH testing techniques (optimal 5.8-7.0), nutrient analysis, and soil amendment strategies for maximum crop yield. Learn how to collect soil samples, interpret test results, and apply appropriate amendments.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "45 min",
       },
       {
         id: "crop-2",
         title: "Seed Selection & Planting",
-        videoUrl: "https://www.youtube.com/embed/8v_4O44e_PE",
+        videoUrl: "/videos/poultry farming.mp4",
         notes:
           "Learn about hybrid vs heirloom seeds, planting depth, spacing requirements, and timing for different seasons. Understanding germination rates, seed treatment, and optimal planting conditions.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "40 min",
       },
       {
         id: "crop-3",
         title: "Irrigation Management",
-        videoUrl: "https://www.youtube.com/embed/YzZf9sK7qDw",
+        videoUrl: "/videos/animal farming.mp4",
         notes:
           "Drip irrigation systems, sprinkler systems, water conservation techniques, and scheduling. Learn to calculate water requirements based on crop type, growth stage, and weather conditions.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "50 min",
       },
       {
         id: "crop-4",
         title: "Pest & Disease Control",
-        videoUrl: "https://www.youtube.com/embed/3m9L1rPcrj4",
+        videoUrl: "/videos/aquaculture.mp4",
         notes:
           "Integrated pest management (IPM), biological controls, organic pesticides, and disease prevention strategies. Identify common pests and diseases, their life cycles, and control measures.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "55 min",
       },
     ],
@@ -102,41 +103,41 @@ const mockLessons: Record<string, Lesson> = {
       {
         id: "maize-1",
         title: "Maize Varieties & Selection",
-        videoUrl: "https://www.youtube.com/embed/5s8S4YJNvtQ",
+        videoUrl: "/videos/soil-testing.mp4",
         notes:
           "Understanding different maize varieties: dent, flint, sweet, popcorn. Selection criteria based on climate, market demand, and disease resistance. Hybrid vs. open-pollinated varieties.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "40 min",
       },
       {
         id: "maize-2",
         title: "Land Preparation & Planting",
-        videoUrl: "https://www.youtube.com/embed/Lx2V8NPh3bA",
+        videoUrl: "/videos/poultry farming.mp4",
         notes:
           "Optimal land preparation techniques, planting depth (2-3 inches), spacing (75cm x 25cm), and plant population calculations. Timing based on rainfall patterns and soil temperature.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "45 min",
       },
       {
         id: "maize-3",
         title: "Nutrient Management",
-        videoUrl: "https://www.youtube.com/embed/7qQhFcP8rSc",
+        videoUrl: "/videos/animal farming.mp4",
         notes:
           "NPK requirements at different growth stages. Side-dressing techniques, foliar feeding, and micronutrient deficiencies. Organic fertilizer options and application rates.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "50 min",
       },
       {
         id: "maize-4",
         title: "Maize Pest Management",
-        videoUrl: "https://www.youtube.com/embed/9bYq2jVnPqA",
+        videoUrl: "/videos/aquaculture.mp4",
         notes:
           "Controlling fall armyworm, stalk borers, and maize weevils. Early detection methods, biological controls, and judicious pesticide use. Post-harvest pest prevention.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "45 min",
       },
     ],
@@ -153,41 +154,41 @@ const mockLessons: Record<string, Lesson> = {
       {
         id: "poultry-1",
         title: "Poultry Breeds Selection",
-        videoUrl: "https://www.youtube.com/embed/2LgQ8eQ8K8s",
+        videoUrl: "/videos/poultry farming.mp4",
         notes:
           "Choosing between layers, broilers, and dual-purpose breeds. Popular breeds: Rhode Island Red, Leghorn, Cornish Cross. Factors affecting breed selection: climate, market, and management capability.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "35 min",
       },
       {
         id: "poultry-2",
         title: "Housing & Equipment",
-        videoUrl: "https://www.youtube.com/embed/4mXKqRqvP5g",
+        videoUrl: "/videos/animal farming.mp4",
         notes:
           "Deep litter vs. battery cage systems. Ventilation requirements, lighting programs, and space requirements. Essential equipment: feeders, drinkers, brooders, and egg collection systems.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "40 min",
       },
       {
         id: "poultry-3",
         title: "Feeding & Nutrition",
-        videoUrl: "https://www.youtube.com/embed/6pXnqNvqQ4s",
+        videoUrl: "/videos/aquaculture.mp4",
         notes:
           "Nutritional requirements at different stages: starter, grower, layer. Feed formulation, commercial feeds vs. home mixing. Water quality and consumption monitoring.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "45 min",
       },
       {
         id: "poultry-4",
         title: "Health Management",
-        videoUrl: "https://www.youtube.com/embed/8rYqVjPqS6s",
+        videoUrl: "/videos/soil-testing.mp4",
         notes:
           "Common diseases: Newcastle, Gumboro, coccidiosis, fowl typhoid. Vaccination schedules, biosecurity measures, and early disease detection. Treatment protocols and prevention strategies.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "50 min",
       },
     ],
@@ -204,41 +205,41 @@ const mockLessons: Record<string, Lesson> = {
       {
         id: "animal-1",
         title: "Cattle Breeds & Selection",
-        videoUrl: "https://www.youtube.com/embed/3mKXqPqvQ7s",
+        videoUrl: "/videos/animal farming.mp4",
         notes:
           "Dairy vs. beef breeds. Holstein, Jersey, Angus, Hereford characteristics. Selection criteria: milk production, growth rate, disease resistance, and adaptability.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "45 min",
       },
       {
         id: "animal-2",
         title: "Housing & Facility Design",
-        videoUrl: "https://www.youtube.com/embed/5nYqRjQrP8s",
+        videoUrl: "/videos/aquaculture.mp4",
         notes:
           "Free-stall barns, tie-stall systems, and open lots. Ventilation, waste management, and milking parlor design. Comfortable housing for optimal production.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "50 min",
       },
       {
         id: "animal-3",
         title: "Nutrition & Feeding",
-        videoUrl: "https://www.youtube.com/embed/7pXrSjQrQ9s",
+        videoUrl: "/videos/soil-testing.mp4",
         notes:
           "Ruminant digestive system, forage quality assessment, concentrate feeding. Total Mixed Ration (TMR) formulation. Mineral and vitamin supplementation.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "55 min",
       },
       {
         id: "animal-4",
         title: "Breeding & Reproduction",
-        videoUrl: "https://www.youtube.com/embed/9qZrUkQrP0s",
+        videoUrl: "/videos/poultry farming.mp4",
         notes:
           "Artificial insemination techniques, estrus detection, pregnancy diagnosis. Genetic improvement strategies, calving management, and record keeping.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "50 min",
       },
     ],
@@ -254,41 +255,41 @@ const mockLessons: Record<string, Lesson> = {
       {
         id: "fish-1",
         title: "Pond Construction & Preparation",
-        videoUrl: "https://www.youtube.com/embed/2mLqQjPrR8s",
+        videoUrl: "/videos/aquaculture.mp4",
         notes:
           "Site selection, pond design, water source, and soil quality. Pond lining, inlet/outlet structures, and pond fertilization. Water quality parameters: pH, dissolved oxygen, temperature.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "45 min",
       },
       {
         id: "fish-2",
         title: "Fish Species Selection",
-        videoUrl: "https://www.youtube.com/embed/4nYrRkQrR9s",
+        videoUrl: "/videos/soil-testing.mp4",
         notes:
           "Tilapia, catfish, carp, and trout farming. Species characteristics, growth rates, and market demand. Polyculture vs. monoculture systems.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "40 min",
       },
       {
         id: "fish-3",
         title: "Feeding & Nutrition",
-        videoUrl: "https://www.youtube.com/embed/6pZrTkQrP0s",
+        videoUrl: "/videos/poultry farming.mp4",
         notes:
           "Feed types: floating vs. sinking pellets. Feeding rates and frequency. Feed formulation, protein requirements, and feeding strategies for optimal growth.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "45 min",
       },
       {
         id: "fish-4",
         title: "Disease Management",
-        videoUrl: "https://www.youtube.com/embed/8qYsVkPrR1s",
+        videoUrl: "/videos/animal farming.mp4",
         notes:
           "Common fish diseases: bacterial, fungal, parasitic. Prevention strategies, water quality management, and treatment options. Biosecurity measures in aquaculture.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "40 min",
       },
     ],
@@ -304,41 +305,41 @@ const mockLessons: Record<string, Lesson> = {
       {
         id: "bee-1",
         title: "Bee Biology & Colony Structure",
-        videoUrl: "https://www.youtube.com/embed/3nXqRjQrQ7s",
+        videoUrl: "/videos/soil-testing.mp4",
         notes:
           "Queen, worker, and drone roles. Life cycle of honey bees. Colony organization, communication through dance, and swarming behavior.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "35 min",
       },
       {
         id: "bee-2",
         title: "Equipment & Hive Setup",
-        videoUrl: "https://www.youtube.com/embed/5pYrSkQrR8s",
+        videoUrl: "/videos/poultry farming.mp4",
         notes:
           "Langstroth hives, protective gear, smokers, and tools. Hive components: bottom board, brood boxes, supers, frames, and covers. Proper hive placement.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "40 min",
       },
       {
         id: "bee-3",
         title: "Hive Management",
-        videoUrl: "https://www.youtube.com/embed/7qZrUlQrP9s",
+        videoUrl: "/videos/animal farming.mp4",
         notes:
           "Regular inspections, swarm prevention, requeening, and feeding. Seasonal management practices. Honey harvesting and processing techniques.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "45 min",
       },
       {
         id: "bee-4",
         title: "Pests & Diseases",
-        videoUrl: "https://www.youtube.com/embed/9sYsVmQrP0s",
+        videoUrl: "/videos/aquaculture.mp4",
         notes:
           "Varroa mites, small hive beetles, wax moths. American and European foulbrood. Integrated pest management and organic treatment options.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "40 min",
       },
     ],
@@ -354,41 +355,41 @@ const mockLessons: Record<string, Lesson> = {
       {
         id: "mushroom-1",
         title: "Mushroom Biology & Species",
-        videoUrl: "https://www.youtube.com/embed/4mKqPjQrR6s",
+        videoUrl: "/videos/soil-testing.mp4",
         notes:
           "Button, oyster, shiitake, and specialty mushrooms. Life cycle: spawn, mycelium, pinheads, fruiting bodies. Substrate preferences for different species.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "35 min",
       },
       {
         id: "mushroom-2",
         title: "Growing Environment",
-        videoUrl: "https://www.youtube.com/embed/6nYrRkQrS7s",
+        videoUrl: "/videos/poultry farming.mp4",
         notes:
           "Temperature, humidity, light, and air exchange requirements. Growing rooms, shelving systems, and environmental controls. Sterilization vs. pasteurization.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "40 min",
       },
       {
         id: "mushroom-3",
         title: "Substrate Preparation",
-        videoUrl: "https://www.youtube.com/embed/8pZrTlQrT8s",
+        videoUrl: "/videos/animal farming.mp4",
         notes:
           "Composting process, straw preparation, sawdust blocks. Supplementation, pH adjustment, and moisture content. Spawn running and casing layer.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "45 min",
       },
       {
         id: "mushroom-4",
         title: "Harvesting & Marketing",
-        videoUrl: "https://www.youtube.com/embed/0qYsVnQrU9s",
+        videoUrl: "/videos/aquaculture.mp4",
         notes:
           "Optimal harvest timing, proper picking technique, grading, and packaging. Fresh vs. dried products. Market channels and value-added products.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "40 min",
       },
     ],
@@ -404,41 +405,41 @@ const mockLessons: Record<string, Lesson> = {
       {
         id: "urban-1",
         title: "Vertical Farming Systems",
-        videoUrl: "https://www.youtube.com/embed/5nKqPkQrQ5s",
+        videoUrl: "/videos/soil-testing.mp4",
         notes:
           "Tower gardens, wall-mounted systems, and stacked planters. Space optimization, lighting requirements, and irrigation systems for vertical setups.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "35 min",
       },
       {
         id: "urban-2",
         title: "Container & Rooftop Gardens",
-        videoUrl: "https://www.youtube.com/embed/7pYrSmQrR6s",
+        videoUrl: "/videos/poultry farming.mp4",
         notes:
           "Selecting containers, soil mixes, and plants for limited spaces. Rooftop weight considerations, wind protection, and water drainage systems.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "40 min",
       },
       {
         id: "urban-3",
         title: "Hydroponics & Aquaponics",
-        videoUrl: "https://www.youtube.com/embed/9qZrTnQrS7s",
+        videoUrl: "/videos/animal farming.mp4",
         notes:
           "Nutrient film technique, deep water culture, ebb and flow systems. Integrating fish and plants in aquaponic systems. Nutrient solutions and monitoring.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "45 min",
       },
       {
         id: "urban-4",
         title: "Community Farming",
-        videoUrl: "https://www.youtube.com/embed/1rYsVoQrT8s",
+        videoUrl: "/videos/aquaculture.mp4",
         notes:
           "Starting community gardens, organizing volunteer programs, sharing harvests. Urban agriculture policies, land access, and community engagement strategies.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "40 min",
       },
     ],
@@ -454,41 +455,41 @@ const mockLessons: Record<string, Lesson> = {
       {
         id: "agribiz-1",
         title: "Farm Business Planning",
-        videoUrl: "https://www.youtube.com/embed/6mKqPlQrR4s",
+        videoUrl: "/videos/soil-testing.mp4",
         notes:
           "Creating comprehensive business plans, mission/vision statements, SWOT analysis, and goal setting. Risk assessment and contingency planning for agricultural enterprises.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "50 min",
       },
       {
         id: "agribiz-2",
         title: "Financial Management",
-        videoUrl: "https://www.youtube.com/embed/8nYrSnQrS5s",
+        videoUrl: "/videos/poultry farming.mp4",
         notes:
           "Budgeting, cash flow analysis, profit/loss statements, and balance sheets. Agricultural loans, grants, and investment strategies. Record keeping and accounting software.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "55 min",
       },
       {
         id: "agribiz-3",
         title: "Marketing & Branding",
-        videoUrl: "https://www.youtube.com/embed/0pZrTpQrT6s",
+        videoUrl: "/videos/animal farming.mp4",
         notes:
           "Developing brand identity, packaging design, and product positioning. Digital marketing, social media strategies, and e-commerce platforms for farm products.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "50 min",
       },
       {
         id: "agribiz-4",
         title: "Supply Chain Management",
-        videoUrl: "https://www.youtube.com/embed/2qYsVqQrU7s",
+        videoUrl: "/videos/aquaculture.mp4",
         notes:
           "Post-harvest handling, storage, transportation, and distribution. Cold chain management, quality control, and traceability systems. Building relationships with buyers.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "45 min",
       },
     ],
@@ -504,41 +505,41 @@ const mockLessons: Record<string, Lesson> = {
       {
         id: "machinery-1",
         title: "Tractor Operations",
-        videoUrl: "https://www.youtube.com/embed/7mKqPmQrR3s",
+        videoUrl: "/videos/soil-testing.mp4",
         notes:
           "Tractor types and sizes, controls and instruments, safe operation practices. Three-point hitch systems, PTO operation, and hydraulic systems. Pre-operation checks and maintenance.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "45 min",
       },
       {
         id: "machinery-2",
         title: "Tillage Equipment",
-        videoUrl: "https://www.youtube.com/embed/9nYrRoQrS4s",
+        videoUrl: "/videos/poultry farming.mp4",
         notes:
           "Plows, harrows, cultivators, and planters. Primary vs. secondary tillage. Conservation tillage equipment. Adjustment and calibration for optimal performance.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "50 min",
       },
       {
         id: "machinery-3",
         title: "Harvesting Machinery",
-        videoUrl: "https://www.youtube.com/embed/1pZrTqQrT5s",
+        videoUrl: "/videos/animal farming.mp4",
         notes:
           "Combine harvesters, forage harvesters, and specialized harvesters. Header types, threshing mechanisms, and cleaning systems. Loss assessment and efficiency optimization.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "55 min",
       },
       {
         id: "machinery-4",
         title: "Precision Agriculture Tech",
-        videoUrl: "https://www.youtube.com/embed/3qYsVsQrU6s",
+        videoUrl: "/videos/aquaculture.mp4",
         notes:
           "GPS guidance systems, yield monitors, variable rate technology, and drones. Data collection and analysis, field mapping, and implementing precision agriculture strategies.",
         introAudio:
-          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
         duration: "50 min",
       },
     ],
@@ -735,15 +736,7 @@ const LessonDetails = () => {
 
             <div className="lesson-content">
               <div className="video-wrapper">
-                <iframe
-                  className="lesson-video"
-                  src={activeTopic.videoUrl}
-                  title={activeTopic.title}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  loading="lazy"
-                ></iframe>
+                <P5VideoPlayer videoUrl={activeTopic.videoUrl} />
               </div>
 
               <div className="content-body">

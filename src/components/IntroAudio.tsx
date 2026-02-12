@@ -11,7 +11,7 @@ interface IntroAudioProps {
 const IntroAudio = ({ audioUrl }: IntroAudioProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const audioCtxRef = useRef<AudioContext | null>(null);
+  const audioCtxRef = useRef<AudioContext | null>(null);  
   const isPlayingRef = useRef(false);
 
   const [isPlaying, setIsPlaying] = useState(false);
