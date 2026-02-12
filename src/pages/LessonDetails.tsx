@@ -53,7 +53,7 @@ const mockLessons: Record<string, Lesson> = {
       {
         id: "1",
         title: "Soil Science & Testing",
-        videoUrl: '<iframe width="1337" height="752" src="https://www.youtube.com/embed/S8M_6oU4C28" frameborder="0" allowfullscreen></iframe>',
+        videoUrl: "https://www.youtube.com/embed/S8M_6oU4C28",
         notes: "Understanding soil types, pH testing techniques (optimal 5.8-7.0), nutrient analysis, and soil amendment strategies for maximum crop yield.",
         introAudio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
         duration: "45 min",
