@@ -1,0 +1,406 @@
+/* SidebarTopics.css */
+.sidebar-topics {
+  background: linear-gradient(145deg, #ffffff 0%, #fafbf8 100%);
+  border: 1px solid rgba(92, 115, 71, 0.15);
+  border-radius: 24px;
+  padding: 1.75rem;
+  height: 100%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  position: sticky;
+  top: 6rem;
+  transition: all 0.3s ease;
+}
+
+.sidebar-topics:hover {
+  box-shadow: 0 12px 32px rgba(92, 115, 71, 0.08);
+}
+
+.sidebar-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #2c4a3e;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(92, 115, 71, 0.12);
+  letter-spacing: -0.02em;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-title::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #5c7347, #8aa77d);
+  border-radius: 4px;
+}
+
+.topics-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.topic-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+.topic-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(135deg, #5c7347, #7a9e6b);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.topic-button:hover::before {
+  opacity: 0.6;
+}
+
+.topic-button.active {
+  background: linear-gradient(135deg, #2c4a3e 0%, #3d5e4e 100%);
+  color: white;
+  box-shadow: 0 8px 16px rgba(44, 74, 62, 0.2);
+  transform: translateY(-2px);
+}
+
+.topic-button.active::before {
+  opacity: 0;
+}
+
+.topic-button.inactive {
+  background: rgba(249, 243, 233, 0.5);
+  color: #5a4a3a;
+  backdrop-filter: blur(4px);
+}
+
+.topic-button.inactive:hover {
+  background: rgba(242, 235, 220, 0.8);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.04);
+}
+
+.topic-content {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+}
+
+.topic-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.topic-button:hover .topic-icon {
+  transform: scale(1.1);
+}
+
+.topic-icon.active {
+  color: white;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.topic-icon.inactive {
+  color: #b8b8b8;
+}
+
+.topic-title {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: left;
+  letter-spacing: -0.01em;
+}
+
+.topic-title.active {
+  font-weight: 600;
+}
+
+.chevron-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: currentColor;
+}
+
+.chevron-icon.active {
+  transform: rotate(90deg);
+}
+
+.chevron-icon.inactive {
+  color: #a0a0a0;
+}
+
+.topic-button:hover .chevron-icon.inactive {
+  color: #5c7347;
+  transform: translateX(4px);
+}
+
+/* Progress Section */
+.progress-section {
+  margin-top: 2rem;
+  padding: 1.5rem 1.25rem;
+  background: linear-gradient(145deg, rgba(92, 115, 71, 0.05), rgba(138, 167, 125, 0.03));
+  border-radius: 20px;
+  border: 1px dashed rgba(92, 115, 71, 0.25);
+  backdrop-filter: blur(4px);
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.progress-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #5c7347;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.progress-percentage {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #2c4a3e;
+  background: rgba(44, 74, 62, 0.08);
+  padding: 0.25rem 0.625rem;
+  border-radius: 20px;
+}
+
+.progress-bar-container {
+  height: 0.5rem;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 100px;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #5c7347, #7a9e6b);
+  border-radius: 100px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+.progress-stats {
+  font-size: 0.8125rem;
+  color: #5a4a3a;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.progress-stats strong {
+  color: #2c4a3e;
+  font-weight: 700;
+}
+
+/* Custom scrollbar for topics list */
+.topics-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.topics-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.topics-list::-webkit-scrollbar-thumb {
+  background: rgba(92, 115, 71, 0.2);
+  border-radius: 4px;
+}
+
+.topics-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(92, 115, 71, 0.3);
+}
+
+/* Animations */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.topic-button {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .sidebar-topics {
+    position: static;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar-topics {
+    padding: 1.5rem;
+    border-radius: 20px;
+  }
+
+  .sidebar-title {
+    font-size: 1.25rem;
+  }
+
+  .topic-button {
+    padding: 0.875rem 1rem;
+  }
+
+  .topic-title {
+    font-size: 0.875rem;
+  }
+
+  .progress-section {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar-topics {
+    padding: 1.25rem;
+  }
+
+  .topic-button {
+    padding: 0.75rem 1rem;
+  }
+
+  .topic-content {
+    gap: 0.625rem;
+  }
+
+  .topic-icon {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .chevron-icon {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .progress-section {
+    padding: 1rem;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .sidebar-topics {
+    background: linear-gradient(145deg, #1e2c24, #1a2620);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .sidebar-title {
+    color: #e2e8d5;
+    border-bottom-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .topic-button.inactive {
+    background: rgba(255, 255, 255, 0.03);
+    color: #d4c9bc;
+  }
+
+  .topic-button.inactive:hover {
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .topic-icon.inactive {
+    color: #6b7a6b;
+  }
+
+  .progress-section {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .progress-title {
+    color: #b8cfaa;
+  }
+
+  .progress-percentage {
+    background: rgba(184, 207, 170, 0.1);
+    color: #e2e8d5;
+  }
+
+  .progress-stats {
+    color: #d4c9bc;
+  }
+
+  .progress-stats strong {
+    color: #e2e8d5;
+  }
+}
+
+/* Print styles */
+@media print {
+  .sidebar-topics {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+
+  .progress-bar-fill::after {
+    animation: none;
+  }
+
+  .topic-button {
+    break-inside: avoid;
+  }
+}

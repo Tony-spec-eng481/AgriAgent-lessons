@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 import "../styles/LessonDetails.css";
 
-// Define interfaces (keep the same)
+// Define interfaces
 interface Topic {
   id: string;
   title: string;
@@ -39,9 +39,8 @@ interface Lesson {
   description?: string;
 }
 
-// Expanded mock lessons data (keep the same)
+// Complete mock lessons data for all branches
 const mockLessons: Record<string, Lesson> = {
-  // ... (keep all your mock lessons data exactly as is)
   crop: {
     title: "Crop Farming Mastery",
     difficulty: "Beginner",
@@ -51,34 +50,555 @@ const mockLessons: Record<string, Lesson> = {
     description: "Comprehensive guide to modern crop farming techniques",
     topics: [
       {
-        id: "1",
+        id: "crop-1",
         title: "Soil Science & Testing",
-        videoUrl: "https://www.youtube.com/embed/S8M_6oU4C28",
-        notes: "Understanding soil types, pH testing techniques (optimal 5.8-7.0), nutrient analysis, and soil amendment strategies for maximum crop yield.",
-        introAudio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+        videoUrl: "https://www.youtube.com/embed/O-1o5z-CRqQ",
+        notes:
+          "Understanding soil types, pH testing techniques (optimal 5.8-7.0), nutrient analysis, and soil amendment strategies for maximum crop yield. Learn how to collect soil samples, interpret test results, and apply appropriate amendments.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
         duration: "45 min",
       },
-      // ... rest of topics
+      {
+        id: "crop-2",
+        title: "Seed Selection & Planting",
+        videoUrl: "https://www.youtube.com/embed/8v_4O44e_PE",
+        notes:
+          "Learn about hybrid vs heirloom seeds, planting depth, spacing requirements, and timing for different seasons. Understanding germination rates, seed treatment, and optimal planting conditions.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+        duration: "40 min",
+      },
+      {
+        id: "crop-3",
+        title: "Irrigation Management",
+        videoUrl: "https://www.youtube.com/embed/YzZf9sK7qDw",
+        notes:
+          "Drip irrigation systems, sprinkler systems, water conservation techniques, and scheduling. Learn to calculate water requirements based on crop type, growth stage, and weather conditions.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+        duration: "50 min",
+      },
+      {
+        id: "crop-4",
+        title: "Pest & Disease Control",
+        videoUrl: "https://www.youtube.com/embed/3m9L1rPcrj4",
+        notes:
+          "Integrated pest management (IPM), biological controls, organic pesticides, and disease prevention strategies. Identify common pests and diseases, their life cycles, and control measures.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+        duration: "55 min",
+      },
     ],
   },
-  // ... rest of lessons
+  maize: {
+    title: "Maize Production Excellence",
+    difficulty: "Intermediate",
+    duration: "4 weeks",
+    icon: "🌽",
+    category: "Cereal Crops",
+    description: "Advanced techniques for high-yield maize cultivation",
+    topics: [
+      {
+        id: "maize-1",
+        title: "Maize Varieties & Selection",
+        videoUrl: "https://www.youtube.com/embed/5s8S4YJNvtQ",
+        notes:
+          "Understanding different maize varieties: dent, flint, sweet, popcorn. Selection criteria based on climate, market demand, and disease resistance. Hybrid vs. open-pollinated varieties.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+        duration: "40 min",
+      },
+      {
+        id: "maize-2",
+        title: "Land Preparation & Planting",
+        videoUrl: "https://www.youtube.com/embed/Lx2V8NPh3bA",
+        notes:
+          "Optimal land preparation techniques, planting depth (2-3 inches), spacing (75cm x 25cm), and plant population calculations. Timing based on rainfall patterns and soil temperature.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+        duration: "45 min",
+      },
+      {
+        id: "maize-3",
+        title: "Nutrient Management",
+        videoUrl: "https://www.youtube.com/embed/7qQhFcP8rSc",
+        notes:
+          "NPK requirements at different growth stages. Side-dressing techniques, foliar feeding, and micronutrient deficiencies. Organic fertilizer options and application rates.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+        duration: "50 min",
+      },
+      {
+        id: "maize-4",
+        title: "Maize Pest Management",
+        videoUrl: "https://www.youtube.com/embed/9bYq2jVnPqA",
+        notes:
+          "Controlling fall armyworm, stalk borers, and maize weevils. Early detection methods, biological controls, and judicious pesticide use. Post-harvest pest prevention.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+        duration: "45 min",
+      },
+    ],
+  },
+  poultry: {
+    title: "Modern Poultry Farming",
+    difficulty: "Beginner",
+    duration: "3 weeks",
+    icon: "🐔",
+    category: "Livestock Production",
+    description:
+      "Complete guide to starting and managing a successful poultry farm",
+    topics: [
+      {
+        id: "poultry-1",
+        title: "Poultry Breeds Selection",
+        videoUrl: "https://www.youtube.com/embed/2LgQ8eQ8K8s",
+        notes:
+          "Choosing between layers, broilers, and dual-purpose breeds. Popular breeds: Rhode Island Red, Leghorn, Cornish Cross. Factors affecting breed selection: climate, market, and management capability.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+        duration: "35 min",
+      },
+      {
+        id: "poultry-2",
+        title: "Housing & Equipment",
+        videoUrl: "https://www.youtube.com/embed/4mXKqRqvP5g",
+        notes:
+          "Deep litter vs. battery cage systems. Ventilation requirements, lighting programs, and space requirements. Essential equipment: feeders, drinkers, brooders, and egg collection systems.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+        duration: "40 min",
+      },
+      {
+        id: "poultry-3",
+        title: "Feeding & Nutrition",
+        videoUrl: "https://www.youtube.com/embed/6pXnqNvqQ4s",
+        notes:
+          "Nutritional requirements at different stages: starter, grower, layer. Feed formulation, commercial feeds vs. home mixing. Water quality and consumption monitoring.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+        duration: "45 min",
+      },
+      {
+        id: "poultry-4",
+        title: "Health Management",
+        videoUrl: "https://www.youtube.com/embed/8rYqVjPqS6s",
+        notes:
+          "Common diseases: Newcastle, Gumboro, coccidiosis, fowl typhoid. Vaccination schedules, biosecurity measures, and early disease detection. Treatment protocols and prevention strategies.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+        duration: "50 min",
+      },
+    ],
+  },
+  animal: {
+    title: "Animal Husbandry Mastery",
+    difficulty: "Intermediate",
+    duration: "5 weeks",
+    icon: "🐄",
+    category: "Livestock Management",
+    description:
+      "Comprehensive animal farming and livestock management techniques",
+    topics: [
+      {
+        id: "animal-1",
+        title: "Cattle Breeds & Selection",
+        videoUrl: "https://www.youtube.com/embed/3mKXqPqvQ7s",
+        notes:
+          "Dairy vs. beef breeds. Holstein, Jersey, Angus, Hereford characteristics. Selection criteria: milk production, growth rate, disease resistance, and adaptability.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+        duration: "45 min",
+      },
+      {
+        id: "animal-2",
+        title: "Housing & Facility Design",
+        videoUrl: "https://www.youtube.com/embed/5nYqRjQrP8s",
+        notes:
+          "Free-stall barns, tie-stall systems, and open lots. Ventilation, waste management, and milking parlor design. Comfortable housing for optimal production.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+        duration: "50 min",
+      },
+      {
+        id: "animal-3",
+        title: "Nutrition & Feeding",
+        videoUrl: "https://www.youtube.com/embed/7pXrSjQrQ9s",
+        notes:
+          "Ruminant digestive system, forage quality assessment, concentrate feeding. Total Mixed Ration (TMR) formulation. Mineral and vitamin supplementation.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+        duration: "55 min",
+      },
+      {
+        id: "animal-4",
+        title: "Breeding & Reproduction",
+        videoUrl: "https://www.youtube.com/embed/9qZrUkQrP0s",
+        notes:
+          "Artificial insemination techniques, estrus detection, pregnancy diagnosis. Genetic improvement strategies, calving management, and record keeping.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+        duration: "50 min",
+      },
+    ],
+  },
+  fish: {
+    title: "Sustainable Aquaculture",
+    difficulty: "Intermediate",
+    duration: "4 weeks",
+    icon: "🐟",
+    category: "Aquaculture",
+    description: "Modern fish farming and sustainable aquaculture practices",
+    topics: [
+      {
+        id: "fish-1",
+        title: "Pond Construction & Preparation",
+        videoUrl: "https://www.youtube.com/embed/2mLqQjPrR8s",
+        notes:
+          "Site selection, pond design, water source, and soil quality. Pond lining, inlet/outlet structures, and pond fertilization. Water quality parameters: pH, dissolved oxygen, temperature.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+        duration: "45 min",
+      },
+      {
+        id: "fish-2",
+        title: "Fish Species Selection",
+        videoUrl: "https://www.youtube.com/embed/4nYrRkQrR9s",
+        notes:
+          "Tilapia, catfish, carp, and trout farming. Species characteristics, growth rates, and market demand. Polyculture vs. monoculture systems.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+        duration: "40 min",
+      },
+      {
+        id: "fish-3",
+        title: "Feeding & Nutrition",
+        videoUrl: "https://www.youtube.com/embed/6pZrTkQrP0s",
+        notes:
+          "Feed types: floating vs. sinking pellets. Feeding rates and frequency. Feed formulation, protein requirements, and feeding strategies for optimal growth.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+        duration: "45 min",
+      },
+      {
+        id: "fish-4",
+        title: "Disease Management",
+        videoUrl: "https://www.youtube.com/embed/8qYsVkPrR1s",
+        notes:
+          "Common fish diseases: bacterial, fungal, parasitic. Prevention strategies, water quality management, and treatment options. Biosecurity measures in aquaculture.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+        duration: "40 min",
+      },
+    ],
+  },
+  bee: {
+    title: "Beekeeping Essentials",
+    difficulty: "Beginner",
+    duration: "3 weeks",
+    icon: "🐝",
+    category: "Apiculture",
+    description: "Modern beekeeping techniques and honey production",
+    topics: [
+      {
+        id: "bee-1",
+        title: "Bee Biology & Colony Structure",
+        videoUrl: "https://www.youtube.com/embed/3nXqRjQrQ7s",
+        notes:
+          "Queen, worker, and drone roles. Life cycle of honey bees. Colony organization, communication through dance, and swarming behavior.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+        duration: "35 min",
+      },
+      {
+        id: "bee-2",
+        title: "Equipment & Hive Setup",
+        videoUrl: "https://www.youtube.com/embed/5pYrSkQrR8s",
+        notes:
+          "Langstroth hives, protective gear, smokers, and tools. Hive components: bottom board, brood boxes, supers, frames, and covers. Proper hive placement.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+        duration: "40 min",
+      },
+      {
+        id: "bee-3",
+        title: "Hive Management",
+        videoUrl: "https://www.youtube.com/embed/7qZrUlQrP9s",
+        notes:
+          "Regular inspections, swarm prevention, requeening, and feeding. Seasonal management practices. Honey harvesting and processing techniques.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+        duration: "45 min",
+      },
+      {
+        id: "bee-4",
+        title: "Pests & Diseases",
+        videoUrl: "https://www.youtube.com/embed/9sYsVmQrP0s",
+        notes:
+          "Varroa mites, small hive beetles, wax moths. American and European foulbrood. Integrated pest management and organic treatment options.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+        duration: "40 min",
+      },
+    ],
+  },
+  mushroom: {
+    title: "Mushroom Cultivation",
+    difficulty: "Beginner",
+    duration: "3 weeks",
+    icon: "🍄",
+    category: "Specialty Crops",
+    description: "Commercial mushroom farming from spawn to harvest",
+    topics: [
+      {
+        id: "mushroom-1",
+        title: "Mushroom Biology & Species",
+        videoUrl: "https://www.youtube.com/embed/4mKqPjQrR6s",
+        notes:
+          "Button, oyster, shiitake, and specialty mushrooms. Life cycle: spawn, mycelium, pinheads, fruiting bodies. Substrate preferences for different species.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+        duration: "35 min",
+      },
+      {
+        id: "mushroom-2",
+        title: "Growing Environment",
+        videoUrl: "https://www.youtube.com/embed/6nYrRkQrS7s",
+        notes:
+          "Temperature, humidity, light, and air exchange requirements. Growing rooms, shelving systems, and environmental controls. Sterilization vs. pasteurization.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+        duration: "40 min",
+      },
+      {
+        id: "mushroom-3",
+        title: "Substrate Preparation",
+        videoUrl: "https://www.youtube.com/embed/8pZrTlQrT8s",
+        notes:
+          "Composting process, straw preparation, sawdust blocks. Supplementation, pH adjustment, and moisture content. Spawn running and casing layer.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+        duration: "45 min",
+      },
+      {
+        id: "mushroom-4",
+        title: "Harvesting & Marketing",
+        videoUrl: "https://www.youtube.com/embed/0qYsVnQrU9s",
+        notes:
+          "Optimal harvest timing, proper picking technique, grading, and packaging. Fresh vs. dried products. Market channels and value-added products.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+        duration: "40 min",
+      },
+    ],
+  },
+  urban: {
+    title: "Urban Farming Innovation",
+    difficulty: "Beginner",
+    duration: "3 weeks",
+    icon: "🏙️",
+    category: "Sustainable Agriculture",
+    description: "Maximizing food production in urban environments",
+    topics: [
+      {
+        id: "urban-1",
+        title: "Vertical Farming Systems",
+        videoUrl: "https://www.youtube.com/embed/5nKqPkQrQ5s",
+        notes:
+          "Tower gardens, wall-mounted systems, and stacked planters. Space optimization, lighting requirements, and irrigation systems for vertical setups.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+        duration: "35 min",
+      },
+      {
+        id: "urban-2",
+        title: "Container & Rooftop Gardens",
+        videoUrl: "https://www.youtube.com/embed/7pYrSmQrR6s",
+        notes:
+          "Selecting containers, soil mixes, and plants for limited spaces. Rooftop weight considerations, wind protection, and water drainage systems.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+        duration: "40 min",
+      },
+      {
+        id: "urban-3",
+        title: "Hydroponics & Aquaponics",
+        videoUrl: "https://www.youtube.com/embed/9qZrTnQrS7s",
+        notes:
+          "Nutrient film technique, deep water culture, ebb and flow systems. Integrating fish and plants in aquaponic systems. Nutrient solutions and monitoring.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+        duration: "45 min",
+      },
+      {
+        id: "urban-4",
+        title: "Community Farming",
+        videoUrl: "https://www.youtube.com/embed/1rYsVoQrT8s",
+        notes:
+          "Starting community gardens, organizing volunteer programs, sharing harvests. Urban agriculture policies, land access, and community engagement strategies.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+        duration: "40 min",
+      },
+    ],
+  },
+  "agri-biz": {
+    title: "Agribusiness Management",
+    difficulty: "Advanced",
+    duration: "6 weeks",
+    icon: "📊",
+    category: "Business & Economics",
+    description: "Strategic business skills for modern agriculture enterprises",
+    topics: [
+      {
+        id: "agribiz-1",
+        title: "Farm Business Planning",
+        videoUrl: "https://www.youtube.com/embed/6mKqPlQrR4s",
+        notes:
+          "Creating comprehensive business plans, mission/vision statements, SWOT analysis, and goal setting. Risk assessment and contingency planning for agricultural enterprises.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+        duration: "50 min",
+      },
+      {
+        id: "agribiz-2",
+        title: "Financial Management",
+        videoUrl: "https://www.youtube.com/embed/8nYrSnQrS5s",
+        notes:
+          "Budgeting, cash flow analysis, profit/loss statements, and balance sheets. Agricultural loans, grants, and investment strategies. Record keeping and accounting software.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+        duration: "55 min",
+      },
+      {
+        id: "agribiz-3",
+        title: "Marketing & Branding",
+        videoUrl: "https://www.youtube.com/embed/0pZrTpQrT6s",
+        notes:
+          "Developing brand identity, packaging design, and product positioning. Digital marketing, social media strategies, and e-commerce platforms for farm products.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+        duration: "50 min",
+      },
+      {
+        id: "agribiz-4",
+        title: "Supply Chain Management",
+        videoUrl: "https://www.youtube.com/embed/2qYsVqQrU7s",
+        notes:
+          "Post-harvest handling, storage, transportation, and distribution. Cold chain management, quality control, and traceability systems. Building relationships with buyers.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+        duration: "45 min",
+      },
+    ],
+  },
+  machinery: {
+    title: "Farm Machinery Operations",
+    difficulty: "Intermediate",
+    duration: "4 weeks",
+    icon: "🚜",
+    category: "Agricultural Engineering",
+    description: "Operation, maintenance, and management of farm equipment",
+    topics: [
+      {
+        id: "machinery-1",
+        title: "Tractor Operations",
+        videoUrl: "https://www.youtube.com/embed/7mKqPmQrR3s",
+        notes:
+          "Tractor types and sizes, controls and instruments, safe operation practices. Three-point hitch systems, PTO operation, and hydraulic systems. Pre-operation checks and maintenance.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+        duration: "45 min",
+      },
+      {
+        id: "machinery-2",
+        title: "Tillage Equipment",
+        videoUrl: "https://www.youtube.com/embed/9nYrRoQrS4s",
+        notes:
+          "Plows, harrows, cultivators, and planters. Primary vs. secondary tillage. Conservation tillage equipment. Adjustment and calibration for optimal performance.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+        duration: "50 min",
+      },
+      {
+        id: "machinery-3",
+        title: "Harvesting Machinery",
+        videoUrl: "https://www.youtube.com/embed/1pZrTqQrT5s",
+        notes:
+          "Combine harvesters, forage harvesters, and specialized harvesters. Header types, threshing mechanisms, and cleaning systems. Loss assessment and efficiency optimization.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+        duration: "55 min",
+      },
+      {
+        id: "machinery-4",
+        title: "Precision Agriculture Tech",
+        videoUrl: "https://www.youtube.com/embed/3qYsVsQrU6s",
+        notes:
+          "GPS guidance systems, yield monitors, variable rate technology, and drones. Data collection and analysis, field mapping, and implementing precision agriculture strategies.",
+        introAudio:
+          "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+        duration: "50 min",
+      },
+    ],
+  },
 };
 
 const LessonDetails = () => {
   const { id } = useParams();
+  // Get the lesson based on the ID from URL, fallback to crop if not found
   const lesson = mockLessons[id || "crop"] || mockLessons["crop"];
-  const [activeTopic, setActiveTopic] = useState(lesson.topics[0]);
+  const [activeTopic, setActiveTopic] = useState<Topic | null>(null);
   const [completedTopics, setCompletedTopics] = useState<Set<string>>(
     new Set(),
   );
   const [progress, setProgress] = useState(0);
 
+  // Initialize active topic when lesson loads
+  useEffect(() => {
+    if (lesson && lesson.topics.length > 0) {
+      setActiveTopic(lesson.topics[0]);
+    }
+  }, [lesson]);
+
   // Calculate progress when completed topics change
   useEffect(() => {
-    const progressPercentage =
-      (completedTopics.size / lesson.topics.length) * 100;
-    setProgress(Math.round(progressPercentage));
-  }, [completedTopics, lesson.topics.length]);
+    if (lesson) {
+      const progressPercentage =
+        (completedTopics.size / lesson.topics.length) * 100;
+      setProgress(Math.round(progressPercentage));
+    }
+  }, [completedTopics, lesson]);
+
+  if (!lesson || !activeTopic) {
+    return (
+      <div className="lesson-container">
+        <div className="lesson-wrapper">
+          <div className="back-navigation">
+            <Link to="/lessons" className="back-button">
+              <ChevronLeft className="back-icon" />
+              <span>Back to Lessons</span>
+            </Link>
+          </div>
+          <div className="text-center py-16">
+            <h2 className="text-2xl font-semibold text-gray-700">
+              Lesson not found
+            </h2>
+            <p className="mt-4 text-gray-600">
+              The lesson you're looking for doesn't exist.
+            </p>
+            <Link
+              to="/lessons"
+              className="inline-block mt-6 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700"
+            >
+              Browse All Lessons
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   const markTopicComplete = (topicId: string) => {
     setCompletedTopics((prev) => {
@@ -99,10 +619,6 @@ const LessonDetails = () => {
     if (currentIndex < lesson.topics.length - 1) {
       const nextTopic = lesson.topics[currentIndex + 1];
       setActiveTopic(nextTopic);
-      // Auto-mark as completed when user moves to next topic
-      if (!completedTopics.has(nextTopic.id)) {
-        markTopicComplete(nextTopic.id);
-      }
     }
   };
 
@@ -122,7 +638,7 @@ const LessonDetails = () => {
     lesson.topics.length - 1;
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className="lesson-container"
@@ -130,7 +646,7 @@ const LessonDetails = () => {
       <div className="lesson-wrapper">
         <div className="back-navigation">
           <Link to="/lessons" className="back-button">
-            <ChevronLeft className="back-icon" /> 
+            <ChevronLeft className="back-icon" />
             <span>Back to Lessons</span>
           </Link>
         </div>
@@ -144,9 +660,7 @@ const LessonDetails = () => {
                   <div className="lesson-intro">
                     <span className="lesson-icon">{lesson.icon}</span>
                     <div>
-                      <h1 className="lesson-title">
-                        {lesson.title}
-                      </h1>
+                      <h1 className="lesson-title">{lesson.title}</h1>
                       {lesson.description && (
                         <p className="lesson-description">
                           {lesson.description}
@@ -156,17 +670,17 @@ const LessonDetails = () => {
                   </div>
 
                   <div className="lesson-meta">
-                    <span className={`difficulty-badge ${lesson.difficulty.toLowerCase()}`}>
+                    <span
+                      className={`difficulty-badge ${lesson.difficulty.toLowerCase()}`}
+                    >
                       {lesson.difficulty}
                     </span>
                     <span className="duration-badge">
-                      <Clock className="meta-icon" /> 
+                      <Clock className="meta-icon" />
                       <span>{lesson.duration}</span>
                     </span>
                     {lesson.category && (
-                      <span className="category-badge">
-                        {lesson.category}
-                      </span>
+                      <span className="category-badge">{lesson.category}</span>
                     )}
                   </div>
                 </div>
@@ -184,7 +698,8 @@ const LessonDetails = () => {
                     ></div>
                   </div>
                   <p className="progress-detail">
-                    {completedTopics.size} of {lesson.topics.length} topics completed
+                    {completedTopics.size} of {lesson.topics.length} topics
+                    completed
                   </p>
                 </div>
               </div>
@@ -193,7 +708,9 @@ const LessonDetails = () => {
                 <div className="topic-info">
                   <Book className="topic-icon" />
                   <span className="current-topic-label">Current Topic:</span>
-                  <span className="current-topic-name">{activeTopic.title}</span>
+                  <span className="current-topic-name">
+                    {activeTopic.title}
+                  </span>
                 </div>
 
                 <div className="topic-actions">
@@ -205,7 +722,7 @@ const LessonDetails = () => {
                   )}
                   <button
                     onClick={() => markTopicComplete(activeTopic.id)}
-                    className={`complete-button ${completedTopics.has(activeTopic.id) ? 'completed' : ''}`}
+                    className={`complete-button ${completedTopics.has(activeTopic.id) ? "completed" : ""}`}
                   >
                     <CheckCircle className="check-icon" />
                     {completedTopics.has(activeTopic.id)
@@ -237,7 +754,9 @@ const LessonDetails = () => {
                     </div>
                     <div>
                       <h2 className="notes-title">Lesson Notes</h2>
-                      <p className="notes-subtitle">Synchronized study material</p>
+                      <p className="notes-subtitle">
+                        Synchronized study material
+                      </p>
                     </div>
                   </div>
                   <IntroAudio audioUrl={activeTopic.introAudio} />
@@ -261,9 +780,7 @@ const LessonDetails = () => {
                         </span>
                       )}
                     </div>
-                    <div className="notes-text">
-                      {activeTopic.notes}
-                    </div>
+                    <div className="notes-text">{activeTopic.notes}</div>
 
                     {/* Learning Objectives */}
                     <div className="objectives-card">
@@ -274,15 +791,21 @@ const LessonDetails = () => {
                       <ul className="objectives-list">
                         <li>
                           <Award className="objective-icon" />
-                          <span>Master the key concepts and techniques presented</span>
+                          <span>
+                            Master the key concepts and techniques presented
+                          </span>
                         </li>
                         <li>
                           <TrendingUp className="objective-icon" />
-                          <span>Apply knowledge to improve farming practices</span>
+                          <span>
+                            Apply knowledge to improve farming practices
+                          </span>
                         </li>
                         <li>
                           <Users className="objective-icon" />
-                          <span>Share insights with fellow farmers and community</span>
+                          <span>
+                            Share insights with fellow farmers and community
+                          </span>
                         </li>
                       </ul>
                     </div>
@@ -292,16 +815,16 @@ const LessonDetails = () => {
                 <div className="navigation-section">
                   <button
                     onClick={handlePrevTopic}
-                    className={`nav-button prev-button ${isFirstTopic ? 'disabled' : ''}`}
+                    className={`nav-button prev-button ${isFirstTopic ? "disabled" : ""}`}
                     disabled={isFirstTopic}
                   >
-                    <ChevronLeft className="nav-icon" /> 
+                    <ChevronLeft className="nav-icon" />
                     Previous Topic
                   </button>
 
                   <div className="action-buttons">
                     <button className="action-button quiz-button">
-                      Take Quiz 
+                      Take Quiz
                       <HelpCircle className="action-icon" />
                     </button>
                     <button className="action-button download-button">
@@ -311,10 +834,10 @@ const LessonDetails = () => {
 
                   <button
                     onClick={handleNextTopic}
-                    className={`nav-button next-button ${isLastTopic ? 'disabled' : ''}`}
+                    className={`nav-button next-button ${isLastTopic ? "disabled" : ""}`}
                     disabled={isLastTopic}
                   >
-                    Next Topic 
+                    Next Topic
                     <ChevronRight className="nav-icon" />
                   </button>
                 </div>
@@ -324,15 +847,21 @@ const LessonDetails = () => {
                   <h4 className="summary-title">Course Progress Summary</h4>
                   <div className="summary-grid">
                     <div className="summary-item">
-                      <p className="summary-value completed-count">{completedTopics.size}</p>
+                      <p className="summary-value completed-count">
+                        {completedTopics.size}
+                      </p>
                       <p className="summary-label">Topics Completed</p>
                     </div>
                     <div className="summary-item">
-                      <p className="summary-value total-count">{lesson.topics.length}</p>
+                      <p className="summary-value total-count">
+                        {lesson.topics.length}
+                      </p>
                       <p className="summary-label">Total Topics</p>
                     </div>
                     <div className="summary-item">
-                      <p className="summary-value progress-percent">{progress}%</p>
+                      <p className="summary-value progress-percent">
+                        {progress}%
+                      </p>
                       <p className="summary-label">Overall Progress</p>
                     </div>
                     <div className="summary-item">
@@ -361,9 +890,6 @@ const LessonDetails = () => {
                 );
                 if (selectedTopic) {
                   setActiveTopic(selectedTopic);
-                  if (!completedTopics.has(topicId)) {
-                    markTopicComplete(topicId);
-                  }
                 }
               }}
             />

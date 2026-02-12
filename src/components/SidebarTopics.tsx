@@ -1,41 +1,69 @@
-import { ChevronRight, PlayCircle, CheckCircle } from 'lucide-react';
+import { ChevronRight, PlayCircle, CheckCircle } from "lucide-react";
+import "../styles/SidebarTopics.css";
 
-const SidebarTopics = ({ topics, activeTopicId, onTopicSelect }: any) => {
+const SidebarTopics = ({
+  topics,
+  activeTopicId,
+  onTopicSelect,
+  progress = 33,
+}: any) => {
+  const completedCount = topics?.filter((t: any) => t.completed).length || 2;
+  const totalCount = topics?.length || 6;
+  const progressPercentage = Math.round((completedCount / totalCount) * 100);
+
   return (
-    <div className="bg-white border border-agriculture-lightGreen/20 rounded-2xl p-6 h-full shadow-sm sticky top-24">
-      <h3 className="text-xl font-bold text-agriculture-green mb-6 border-b border-agriculture-green/10 pb-4">
-        Lesson Topics
-      </h3>
-      <div className="space-y-3 font-medium">
-        {topics.map((topic: any) => (
-          <button
-            key={topic.id}
-            onClick={() => onTopicSelect(topic.id)}
-            className={`w-full flex items-center justify-between p-4 rounded-xl transition-all ${
-              activeTopicId === topic.id
-                ? 'bg-agriculture-green text-white shadow-md scale-105'
-                : 'bg-agriculture-cream/30 text-agriculture-brown hover:bg-agriculture-cream/60'
-            }`}
-          >
-            <div className="flex items-center gap-3">
-              {activeTopicId === topic.id ? (
-                <PlayCircle className="h-5 w-5" />
-              ) : (
-                <CheckCircle className="h-5 w-5 text-gray-300" />
-              )}
-              <span className="text-left text-sm">{topic.title}</span>
-            </div>
-            <ChevronRight className={`h-4 w-4 transition-transform ${activeTopicId === topic.id ? 'rotate-90' : ''}`} />
-          </button>
-        ))}
+    <div className="sidebar-topics">
+      <h3 className="sidebar-title">Lesson Topics</h3>
+
+      <div className="topics-list">
+        {topics.map((topic: any, index: number) => {
+          const isActive = activeTopicId === topic.id;
+          const isCompleted = topic.completed;
+
+          return (
+            <button
+              key={topic.id}
+              onClick={() => onTopicSelect(topic.id)}
+              className={`topic-button ${isActive ? "active" : "inactive"}`}
+              style={{ animationDelay: `${index * 0.05}s` }}
+            >
+              <div className="topic-content">
+                {isActive ? (
+                  <PlayCircle className={`topic-icon active`} />
+                ) : (
+                  <CheckCircle
+                    className={`topic-icon inactive ${isCompleted ? "completed" : ""}`}
+                  />
+                )}
+                <span className={`topic-title ${isActive ? "active" : ""}`}>
+                  {topic.title}
+                </span>
+              </div>
+              <ChevronRight
+                className={`chevron-icon ${isActive ? "active" : "inactive"}`}
+              />
+            </button>
+          );
+        })}
       </div>
-      
-      <div className="mt-8 p-4 bg-agriculture-green/5 rounded-xl border border-dashed border-agriculture-green/20">
-        <p className="text-xs text-agriculture-green/70 font-bold uppercase tracking-wider mb-2">Progress</p>
-        <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-          <div className="h-full bg-agriculture-green w-1/3 rounded-full" />
+
+      <div className="progress-section">
+        <div className="progress-label">
+          <span className="progress-title">Course Progress</span>
+          <span className="progress-percentage">{progressPercentage}%</span>
         </div>
-        <p className="text-xs text-agriculture-brown mt-2">2 of 6 topics completed</p>
+        <div className="progress-bar-container">
+          <div
+            className="progress-bar-fill"
+            style={{ width: `${progressPercentage}%` }}
+          />
+        </div>
+        <div className="progress-stats">
+          <span>
+            <strong>{completedCount}</strong> of <strong>{totalCount}</strong>{" "}
+            topics completed
+          </span>
+        </div>
       </div>
     </div>
   );
