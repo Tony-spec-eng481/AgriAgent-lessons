@@ -57,7 +57,7 @@ const mockLessons: Record<string, Lesson> = {
         notes:
           "Understanding soil types, pH testing techniques (optimal 5.8-7.0), nutrient analysis, and soil amendment strategies for maximum crop yield. Learn how to collect soil samples, interpret test results, and apply appropriate amendments.",
         introAudio:
-          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
+          "/audio/crop-farming.mp3",
         duration: "45 min",
       },
       {
@@ -107,7 +107,7 @@ const mockLessons: Record<string, Lesson> = {
         notes:
           "Understanding different maize varieties: dent, flint, sweet, popcorn. Selection criteria based on climate, market demand, and disease resistance. Hybrid vs. open-pollinated varieties.",
         introAudio:
-          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
+          "/audio/maize-production.mp3",
         duration: "40 min",
       },
       {
@@ -158,7 +158,7 @@ const mockLessons: Record<string, Lesson> = {
         notes:
           "Choosing between layers, broilers, and dual-purpose breeds. Popular breeds: Rhode Island Red, Leghorn, Cornish Cross. Factors affecting breed selection: climate, market, and management capability.",
         introAudio:
-          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
+          "/audio/poulty-farming.mp3",
         duration: "35 min",
       },
       {
@@ -209,7 +209,7 @@ const mockLessons: Record<string, Lesson> = {
         notes:
           "Dairy vs. beef breeds. Holstein, Jersey, Angus, Hereford characteristics. Selection criteria: milk production, growth rate, disease resistance, and adaptability.",
         introAudio:
-          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
+          "/audio/Animal-farming.mp3",
         duration: "45 min",
       },
       {
@@ -259,7 +259,7 @@ const mockLessons: Record<string, Lesson> = {
         notes:
           "Site selection, pond design, water source, and soil quality. Pond lining, inlet/outlet structures, and pond fertilization. Water quality parameters: pH, dissolved oxygen, temperature.",
         introAudio:
-          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
+          "/audio/aquaculture.mp3",
         duration: "45 min",
       },
       {
@@ -309,7 +309,7 @@ const mockLessons: Record<string, Lesson> = {
         notes:
           "Queen, worker, and drone roles. Life cycle of honey bees. Colony organization, communication through dance, and swarming behavior.",
         introAudio:
-          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
+          "/audio/bee- keeping.mp3",
         duration: "35 min",
       },
       {
@@ -359,7 +359,7 @@ const mockLessons: Record<string, Lesson> = {
         notes:
           "Button, oyster, shiitake, and specialty mushrooms. Life cycle: spawn, mycelium, pinheads, fruiting bodies. Substrate preferences for different species.",
         introAudio:
-          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
+          "/audio/Mushroom-farming.mp3",
         duration: "35 min",
       },
       {
@@ -409,7 +409,7 @@ const mockLessons: Record<string, Lesson> = {
         notes:
           "Tower gardens, wall-mounted systems, and stacked planters. Space optimization, lighting requirements, and irrigation systems for vertical setups.",
         introAudio:
-          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
+          "/audio/urban-farming.mp3",
         duration: "35 min",
       },
       {
@@ -459,7 +459,7 @@ const mockLessons: Record<string, Lesson> = {
         notes:
           "Creating comprehensive business plans, mission/vision statements, SWOT analysis, and goal setting. Risk assessment and contingency planning for agricultural enterprises.",
         introAudio:
-          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
+          "/audio/Agribusiness.mp3",
         duration: "50 min",
       },
       {
@@ -509,7 +509,7 @@ const mockLessons: Record<string, Lesson> = {
         notes:
           "Tractor types and sizes, controls and instruments, safe operation practices. Three-point hitch systems, PTO operation, and hydraulic systems. Pre-operation checks and maintenance.",
         introAudio:
-          "/audio/Agriculture_Lesson_Intro_Alfred_Mwai.mp3",
+          "/audio/Farm-machinery.mp3",
         duration: "45 min",
       },
       {

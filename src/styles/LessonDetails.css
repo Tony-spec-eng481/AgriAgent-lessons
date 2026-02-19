@@ -323,7 +323,12 @@
 
 .video-wrapper {
   background: #000;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 2rem;
   aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .lesson-video {
