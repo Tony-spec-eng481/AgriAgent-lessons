@@ -24,7 +24,7 @@ const P5VideoPlayer = ({ videoUrl }: P5VideoPlayerProps) => {
   const playingRef = useRef(false); 
 
   useEffect(() => {
-    // DEMO FIX: Forces the local file to play so you don't get a 404 error tomorrow!
+    //  Forces the local file to play !
     const actualVideoUrl = "/farm_lesson.mp4"; 
     
     if (!containerRef.current) return;
