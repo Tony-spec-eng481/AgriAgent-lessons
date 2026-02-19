@@ -1,73 +1,83 @@
-# React + TypeScript + Vite
+# 🌾 AgriAgent: Interactive Multimedia Learning Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**AgriAgent** is a modern, interactive e-learning platform developed for SSE 2208: Multimedia Systems.
 
-Currently, two official plugins are available:
+The project demonstrates seamless integration of synchronized video, audio, procedural animation, and user interactivity to create an immersive agricultural learning experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Technical Stack
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+- **Framework:** React.js (State Management & UI)  
+- **Multimedia Engine:** p5.js (Instance Mode)  
+- **Animations:** GSAP (GreenSock) & Framer Motion  
+- **Iconography:** Lucide-React  
+- **Styling:** CSS3 & Tailwind CSS  
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🎯 Multimedia Rubric Fulfillment
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 🎥 Video Integration (8 Marks)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- HD video rendered directly onto the p5.js canvas using `p.image()`.
+- Custom play/pause system (no default browser controls).
+- Custom progress bar with seek functionality.
+- React-controlled playback state.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 🔊 Audio & Sound (8 Marks)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+**Atmospheric Audio**
+- Looping `rain.mp3` track.
+- Fully synchronized with video playback.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+**Instructional Audio**
+- Topic-based `IntroAudio` components.
+- Visual UI indicators for active ambience.
+
+---
+
+### 🎨 Animation & Graphics (6 Marks)
+
+#### Procedural Animation
+- 🌞 Moving Sun  
+- 🌱 Growing Crop  
+
+Animations run only when the video is playing (state-driven logic).
+
+#### Pixel Transition System
+- GSAP-powered grid animation  
+- Mathematical pixel size calculation for smooth content reveal  
+
+---
+
+### 🖱️ Interactivity (5 Marks)
+
+- Click-to-play / Click-to-pause  
+- Custom seek bar navigation  
+- Hover effects  
+- Fully responsive multimedia canvas  
+
+---
+
+## 👥 Group 481 – Team Members & Roles
+
+| Name | Role | Contribution |
+|------|------|--------------|
+| John Warui | Lead Developer | Core system architecture, multimedia engine integration, technical implementation |
+| Sammy Kiprop | System Architect & Integration Engineer | React state management, p5.js integration, animation logic |
+| Michael Imani | UI/UX Developer | Interface design, styling, layout structuring |
+| Ian Kipchichir | Media & Asset Coordinator | Audio/video asset management and optimization |
+| Kagundu Joel Mwendwa | Documentation Lead | Technical writing, project report, presentation preparation |
+| Cliff Kiprono | QA & Testing Lead | System testing, debugging, cross-browser validation |
+
+---
+
+## 🛠️ Installation & Setup
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/Tony-spec-eng481/AgriAgent-lessons.git
