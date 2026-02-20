@@ -68,7 +68,6 @@ Animations run only when the video is playing (state-driven logic).
 |------|------|--------------|
 | John Warui | Lead Developer | Core system architecture, multimedia engine integration, technical implementation |
 | Sammy Kiprop | System Architect & Integration Engineer | React state management, p5.js integration, animation logic |
-| Michael Imani | UI/UX Developer | Interface design, styling, layout structuring |
 | Ian Kipchichir | Media & Asset Coordinator | Audio/video asset management and optimization |
 | Kagundu Joel Mwendwa | Documentation Lead | Technical writing, project report, presentation preparation |
 | Cliff Kiprono | QA & Testing Lead | System testing, debugging, cross-browser validation |
